@@ -89,7 +89,7 @@ print(f"\nTest class distribution:\n{y_test.value_counts()}")
 skewed_numeric = ['duration', 'src_bytes', 'dst_bytes', 'count', 'srv_count',
                   'dst_host_count', 'dst_host_srv_count']
 
-# One-hot encode categoricals (fit on train only, transform both)
+
 ohe = OneHotEncoder(handle_unknown='ignore', sparse_output=False)
 ohe.fit(X_train[cat_cols])
 
@@ -140,7 +140,7 @@ pipeline = ImbPipeline([
 ])
 
 # ==============================================================
-# 8. CROSS-VALIDATION (mandatory for report)
+# 8. CROSS-VALIDATION 
 # ==============================================================
 print("\nRunning 3-fold cross-validation...")
 cv_scores = cross_val_score(
@@ -160,13 +160,9 @@ y_pred     = le_y.inverse_transform(y_pred_enc)
 
 test_f1 = f1_score(y_test, y_pred, average='macro')
 
-print(f"\n=== Final Results on KDDTest+ ===")
-print(f"CV macro F1:   {cv_scores.mean():.4f} (± {cv_scores.std():.4f})")
-print(f"Test macro F1: {test_f1:.4f}")
-print(f"\n{classification_report(y_test, y_pred)}")
-
+print("final model fitted")
 # ==============================================================
-# 9b. THRESHOLD TUNING (OOF-based, no test leakage)
+# 9b. THRESHOLD TUNING 
 # ==============================================================
 from sklearn.model_selection import StratifiedKFold
 
@@ -227,7 +223,7 @@ print(f"\n{classification_report(y_test, y_pred)}")
 # ==============================================================
 # 10. CONFUSION MATRIX
 # ==============================================================
-import matplotlib.pyplot as plt  # installed automatically with seaborn
+import matplotlib.pyplot as plt 
 import seaborn as sns
 from sklearn.metrics import confusion_matrix
 
