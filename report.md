@@ -3,7 +3,7 @@
 **Course:** Advanced Python (ICS0019)
 **Team members:** Kaan Metin, Lorenz Ritsch
 **Date:** 25.05.2026
-**Repository:** https://github.com/Lxrenz123/LLM_TRAINING_NIDS
+**Repository:** https://github.com/Lxrenz123/ML_TRAINING_NIDS
 ---
 
 ## 1. Approach
